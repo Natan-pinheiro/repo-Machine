@@ -3,7 +3,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Machine</title>
 </head>
 
 <style>
@@ -26,7 +26,6 @@ body
 .demo2
 {
 
-        display: none; 
         background-color: #553694; 
         border-radius: 5px; 
         padding: 5px; 
@@ -41,7 +40,6 @@ body
 .demo3
 {
 
-        display: none; 
         background-color: #553694; 
         border-radius: 5px; 
         padding: 5px; 
@@ -55,7 +53,6 @@ body
 .demo4
 {
 
-        display: none; 
         background-color: #553694; 
         border-radius: 5px; 
         padding: 5px; 
@@ -68,8 +65,7 @@ body
 
 .demo5
 {
-
-        display: none; 
+ 
         background-color: #553694; 
         border-radius: 5px; 
         padding: 5px; 
@@ -155,24 +151,24 @@ button:hover
                 <h3>Converter para:</h3>
 
 
-                <b>Decimal</b><input onclick="aparecer_decimal()" type="checkbox">
+                <b>Decimal</b>
         <br>
                         <div class="demo5" id="demo5"></div>
         <br><br>
 
-                <b>Octal</b><input onclick="aparecer_octal()" type="checkbox">
+                <b>Octal</b>
         <br>
                 <div class="demo2" id="demo2"></div>
 
         <br><br>
 
-                <b>Hexadecimal</b><input onclick="aparecer_hexa()" type="checkbox">
+                <b>Hexadecimal</b>
         <br>
                 <div class="demo3" id="demo3"></div>
                 
         <br><br>
 
-                <b>Binário</b><input onclick="aparecer_bin()" type="checkbox">
+                <b>Binário</b>
         <br>
                 <div class="demo4" id="demo4"></div>
 
@@ -193,42 +189,37 @@ function converter() {
         var numero = demo1.value;
         var base = Number(select_base.value);
 
-let decimal = parseInt(numero, base);
+        let decimal = parseInt(numero, base);
+
+        if(isNaN(decimal))
+        {
+
+                alert(`Insira um número válido!`)
+
+        }
+        else
+        {
+
+                let octal = decimal.toString(8);
+
+                let hexadecimal = decimal.toString(16).toUpperCase();
+
+                let binaria = decimal.toString(2);
+
+                console.log (decimal);
+                console.log (octal);
+                console.log (hexadecimal);
+                console.log (binaria);
 
 
-let octal = decimal.toString(8);
+                document.getElementById("demo5").innerHTML = ` ${decimal}`;
+                document.getElementById("demo2").innerHTML = ` ${octal}`;
+                document.getElementById("demo3").innerHTML = ` ${hexadecimal}`;
+                document.getElementById("demo4").innerHTML = ` ${binaria}`;
+        }
 
-let hexadecimal = decimal.toString(16).toUpperCase();
 
-let binaria = decimal.toString(2);
-
-console.log (decimal);
-console.log (octal);
-console.log (hexadecimal);
-console.log (binaria);
-
-document.getElementById("demo5").innerHTML = ` ${decimal}`;
-document.getElementById("demo2").innerHTML = ` ${octal}`;
-document.getElementById("demo3").innerHTML = ` ${hexadecimal}`;
-document.getElementById("demo4").innerHTML = ` ${binaria}`;
 }
-
-function aparecer_bin() {
-    demo4.style.display = 'block'
-}
-
-function aparecer_hexa() {
-    demo3.style.display = 'block'
-}
-
-function aparecer_octal() {
-    demo2.style.display = 'block'
-}
-
-function aparecer_decimal() {
-    demo5.style.display = 'block'
-}
-
 </script>
 </body>
 </html>
